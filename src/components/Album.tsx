@@ -29,15 +29,18 @@ const theme = createTheme();
 
 export default function Album() {
 
-  const [puppy, setpuppy] = useState<Puppy[]>([{
-    id:'96c790f8-365d-47d3-91f8-79d9d15953be',
-  breed:"Afirican",
-name:"jokui",
-image:"https://www.stockvault.net/data/2008/01/29/104298/preview16.jpg"},{
+  const [puppy, setpuppy] = useState<Puppy[]>([
+//     {
+//     id:'96c790f8-365d-47d3-91f8-79d9d15953be',
+//   breed:"Afirican",
+// name:"jokui",
+// image:"https://www.stockvault.net/data/2008/01/29/104298/preview16.jpg"},
+{
   id:'96c790f8-365d-47d3-91f8-79d9d15953bf',
 breed:"English",
 name:"Tommy",
-image:"https://www.stockvault.net/data/2012/11/25/138377/preview16.jpg"}]);
+image:"https://www.stockvault.net/data/2012/11/25/138377/preview16.jpg"}
+]);
   const navigate = useNavigate();
  
   useEffect(() => {
@@ -138,7 +141,9 @@ image:"https://www.stockvault.net/data/2012/11/25/138377/preview16.jpg"}]);
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">View</Button>
+                    <Button className="me-4" size="small"
+                       variant="outlined" color='info'
+                        onClick={() => navigate(`/puppy-details/${card.id}`)}>View</Button>
                     <Button className="me-4" size="small"
                        variant="outlined" color='primary'
                         onClick={() => navigate(`/puppy-update/${card.id}`)}
