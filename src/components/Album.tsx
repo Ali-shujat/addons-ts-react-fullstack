@@ -15,6 +15,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 type Puppy = {
@@ -37,10 +38,8 @@ image:"https://www.stockvault.net/data/2008/01/29/104298/preview16.jpg"},{
 breed:"English",
 name:"Tommy",
 image:"https://www.stockvault.net/data/2012/11/25/138377/preview16.jpg"}]);
-  //const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false);
-  const [itemToDeleteId, setItemToDeleteId] = useState('0');
-
+  const navigate = useNavigate();
+ 
   useEffect(() => {
     axios.get("https://localhost:7205/api/Puppies").then((response) => {
       setpuppy((data) => {
@@ -51,25 +50,13 @@ image:"https://www.stockvault.net/data/2012/11/25/138377/preview16.jpg"}]);
   function confirmDeleteHandler(itemToDeleteId:string) {
     axios.delete(`https://localhost:7205/api/Puppies/${itemToDeleteId}`)
       .then((response) => {
-        console.log(response);
-        setShowModal(false);
+        console.log(response);  
         setpuppy((existingData) => {
           return existingData.filter((_) => _.id !== itemToDeleteId);
         });
-        setItemToDeleteId('0');
+   
       });
   }
-  // function showConfirmDeleteHandler(id: string) {
-  //   console.log(id);
-  //   setShowModal(true);
-  //   setItemToDeleteId(id);
-  // }
-
-  // function hideConfirmDeleteHandler() {
-  //   setShowModal(false);
-
-  //   setItemToDeleteId('0');
-  // }
 
 
 
@@ -154,7 +141,7 @@ image:"https://www.stockvault.net/data/2012/11/25/138377/preview16.jpg"}]);
                     <Button size="small">View</Button>
                     <Button className="me-4" size="small"
                        variant="outlined" color='primary'
-                        //onClick={() => navigate(`/superdeveloper-update/${card.id}`)}
+                        onClick={() => navigate(`/puppy-update/${card.id}`)}
                       >
                          🖋️Edit
                       </Button>
