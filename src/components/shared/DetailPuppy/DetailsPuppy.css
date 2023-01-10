@@ -1,5 +1,5 @@
 
-input[type=text],
+.input,
 select {
     width: 100%;
     padding: 12px 20px;
@@ -26,15 +26,18 @@ input[type=submit]:hover {
 }
 
 .details {
+    width: 500px;
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
-    margin: 10%;
+   margin: 10%
 }
 
 .detail-image {
-  border-radius: 50%;
-  box-align: center;
-  width: 300px;
-  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home{
+    float: right;
 }

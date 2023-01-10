@@ -18,31 +18,28 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-type Puppy = {
+interface IPuppy{
   id: string;
   breed: string;
   name: string;
   image: string;
+  birthDate: string;
 }
 
 const theme = createTheme();
 
 export default function Album() {
-
-  const [puppy, setpuppy] = useState<Puppy[]>([
-//     {
-//     id:'96c790f8-365d-47d3-91f8-79d9d15953be',
-//   breed:"Afirican",
-// name:"jokui",
-// image:"https://www.stockvault.net/data/2008/01/29/104298/preview16.jpg"},
-{
-  id:'96c790f8-365d-47d3-91f8-79d9d15953bf',
-breed:"English",
-name:"Tommy",
-image:"https://www.stockvault.net/data/2012/11/25/138377/preview16.jpg"}
-]);
   const navigate = useNavigate();
- 
+  const [puppy, setpuppy] = useState<IPuppy[]>([
+    {
+      id: '96c790f8-365d-47d3-91f8-79d9d15953bf',
+      breed: "English",
+      name: "Tommy",
+      birthDate: '20222030',
+      image: "https://www.stockvault.net/data/2012/11/25/138377/preview16.jpg"
+    }
+  ]);
+
   useEffect(() => {
     axios.get("https://localhost:7205/api/Puppies").then((response) => {
       setpuppy((data) => {
@@ -50,19 +47,17 @@ image:"https://www.stockvault.net/data/2012/11/25/138377/preview16.jpg"}
       });
     });
   }, []);
-  function confirmDeleteHandler(itemToDeleteId:string) {
+  function confirmDeleteHandler(itemToDeleteId: string) {
     axios.delete(`https://localhost:7205/api/Puppies/${itemToDeleteId}`)
       .then((response) => {
-        console.log(response);  
+        console.log(response);
         setpuppy((existingData) => {
           return existingData.filter((_) => _.id !== itemToDeleteId);
         });
-   
+
       });
   }
-
-
-
+ 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -101,7 +96,7 @@ image:"https://www.stockvault.net/data/2012/11/25/138377/preview16.jpg"}
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
               Designed products for your dog, training, hunting and active life.
-              We don&apos;t sell pets but  we provide a platform to buy a sell.
+              We don&apos;t sell pets but  we provide a platform to buyer and seller.
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -142,20 +137,20 @@ image:"https://www.stockvault.net/data/2012/11/25/138377/preview16.jpg"}
                   </CardContent>
                   <CardActions>
                     <Button className="me-4" size="small"
-                       variant="outlined" color='info'
-                        onClick={() => navigate(`/puppy-details/${card.id}`)}>View</Button>
+                      variant="outlined" color='info'
+                      onClick={() => navigate(`/puppy-details/${card.id}`)}>View</Button>
                     <Button className="me-4" size="small"
-                       variant="outlined" color='primary'
-                        onClick={() => navigate(`/puppy-update/${card.id}`)}
-                      >
-                         🖋️Edit
-                      </Button>
+                      variant="outlined" color='primary'
+                      onClick={() => navigate(`/puppy-update/${card.id}`)}
+                    >
+                      🖋️Edit
+                    </Button>
                     <Button style={{ float: 'right' }} size="small"
-                       variant="outlined" color="error"
-                        onClick={() => confirmDeleteHandler(card.id)}
-                      >
-                        ❌Delete
-                      </Button>
+                      variant="outlined" color="error"
+                      onClick={() => confirmDeleteHandler(card.id)}
+                    >
+                      ❌Delete
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>

@@ -1,9 +1,9 @@
 import './App.css';
 import Album from './components/Album';
 import { Route, Routes } from "react-router-dom";
-import UpdatePuppy from './components/UpdatePuppy';
+import UpdatePuppy from './components/UpdatePuppy/UpdatePuppy';
 import AddPuppy from './components/AddPuppy';
-import DetailPuppy from './components/shared/DetailPuppy';
+import DetailPuppy from './components/shared/DetailPuppy/DetailPuppy';
 
 function App() {
 
