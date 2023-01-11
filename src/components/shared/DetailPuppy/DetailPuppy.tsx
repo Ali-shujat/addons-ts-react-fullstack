@@ -1,3 +1,4 @@
+import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, makeStyles, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -10,6 +11,7 @@ interface IPuppy {
     image: string;
     birthDate: string;
 }
+
 function DetailPuppy() {
     const [puppy, setpuppy] = useState<IPuppy>(
         {
@@ -46,38 +48,41 @@ function DetailPuppy() {
     }, []);
     return (
         <>
+            <div className='DetailBody'>
+                <Card style={{ width: "345px", margin: "10%", boxShadow:" 0 10px 20px 0 rgba(153, 153, 153, 0.25)"}}>
+                    <CardActionArea>
+                        <CardMedia
+                            component="img"
+                            alt="Contemplative Reptile"
+                            height="240"
+                            image={puppy.image}
+                            title="Contemplative Reptile"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                                {puppy.breed}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {puppy.name} are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                                across all continents except Antarctica. <br />
+                                Data of Birth : {puppy.birthDate}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <Button size="small" color="primary">
+                            <Link to="/">🏠Home</Link>
+                        </Button>
 
-            <div className='details'>
-                <div className='home'>
-                    <Link to="/">
-                        <h3> 🏠 Go Home</h3>
-                    </Link>
-                </div>
+                        <Button size="small" color="primary">
+                            Share
+                        </Button>
+                        <Button size="small" color="primary">
+                            Learn More
+                        </Button>
 
-                <h3>Detail of Puppy</h3><br />
-                <div  className='detail-image'>
-                <img style={{borderRadius:"50%", width:"300px",height:"300px"}} src={puppy.image} alt="Puppy_Image" />
-                </div>
-                <form >
-                    <label>Name:
-                        <input className="input"
-                            type="text"
-                            value={puppy.name}
-                        />
-                    </label>
-                    <label>Breed:
-                        <input className="input"
-                            type="text"
-                            value={puppy.breed}
-                        />
-                    </label>
-                    <label>Birth Date:
-                        <input className="input"
-                            type="text"
-                            value={puppy.birthDate}
-                        />
-                    </label>
-                </form>
+                    </CardActions>
+                </Card>
             </div>
         </>
     )

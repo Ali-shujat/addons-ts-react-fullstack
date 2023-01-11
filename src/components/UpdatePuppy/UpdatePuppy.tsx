@@ -1,10 +1,10 @@
 import UpdateIcon from '@mui/icons-material/Update';
-import { Box, Button, Container, TextField } from '@mui/material';
+import { Box, Button, Container, imageListClasses, TextField } from '@mui/material';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { IPuppy } from '../../types';
-//import './UpdatePuppy.css';
+import './UpdatePuppy.css';
 
 function UpdatePuppy() {
   const [puppy, setpuppy] = useState<IPuppy>(
@@ -39,25 +39,30 @@ function UpdatePuppy() {
       });
   }, []);
 
-  function updatePuppyHandler() {
-    //   // var payload = {
-    //   //   name: name.valu,
-    //   //   breed: breed.current.valueOf,
-    //   //   image: image.current.valueOf,
-    //   //   birthDate:birthDate.current.valueOf,
-    //   //   id: id,
-    //   // };
-    //   // console.log(puppy);
-    //   axios
-    //     .put("https://localhost:7205/api/Puppies", puppy)
-    //     .then((response) => {
-    //       navigate("/");
-    //     });
+  const submitForm=(event: React.FormEvent<HTMLFormElement>)=> {
+    event.preventDefault();
+    var payload = {
+      id: puppy.id,
+      breed: puppy.breed,
+      name: puppy.name,
+      image: puppy.image,
+      birthDate: puppy.birthDate,
+    };
+    console.log('📩'+ payload);
+    
+    axios
+      .put(`https://localhost:7205/api/Puppies/${id}`, payload)
+      .then((response) => {
+        console.log('✅'+ response.data);
+        navigate("/");
+      }).catch((e: Error) => {
+        console.log('👻'+e);
+      });
   }
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const value = event.currentTarget.value
-    const name  = event.target.name;
+    const name = event.target.name;
     setpuppy({ ...puppy, [name]: value });
   };
 
@@ -86,36 +91,41 @@ function UpdatePuppy() {
     //   </Container>
 
     // </>
-    <>
-      <div className="form">
-      <div className='home'>
+    < >
+    <div className='UpdateBody'>
+      <form className="form"  onSubmit={submitForm}>
+        <div className='home'>
           <Link to="/">
             <h3> Home 🏠 </h3>
           </Link>
         </div>
-        <div className="title">Welcome</div>
+        <div className="title">Update</div>
         <div className="subtitle">Let's update Puppy info!</div>
-        <div className="input-container ic1">
-          <input id="firstname" className="input" type="text" placeholder=" "  value={puppy.name} name='name' onChange={handleInputChange}/>
+        <div className="input-container ic2">
+          <input id="puppy_name" className="input" type="text" value={puppy.name} name='name' onChange={handleInputChange} />
           <div className="cut"></div>
-          <label htmlFor="firstname" className="placeholder">Name</label>
+          <label  htmlFor="puppy_name" className="placeholder">Puppy Name</label>
         </div>
         <div className="input-container ic2">
-          <input id="lastname" className="input" type="text" placeholder=" " value={puppy.breed} name='breed' onChange={handleInputChange}/>
+          <input id="lastname" className="input" type="text" placeholder=" " value={puppy.breed} name='breed' onChange={handleInputChange} />
           <div className="cut"></div>
-          <label htmlFor="lastname" className="placeholder">Breed</label>
+          <label htmlFor="lastname" className="placeholder">  Breed</label>
         </div>
         <div className="input-container ic2">
-          <input id="email" className="input" type="text" placeholder=" " value={puppy.birthDate} name='bithDate' onChange={handleInputChange}/>
+          <input id="email" className="input" type="text" placeholder=" " value={puppy.birthDate} name='bithDate' onChange={handleInputChange} />
           <div className="cut cut-short"></div>
           <label htmlFor="email" className="placeholder">BirthDate</label>
         </div>
         <div className="input-container ic2">
-          <input id="imageUrl" className="input" type="text" placeholder=" " value={puppy.image} name='image' onChange={handleInputChange}/>
+          <input id="imageUrl" className="input" type="text" placeholder=" " value={puppy.image} name='image' onChange={handleInputChange} />
           <div className="cut"></div>
           <label htmlFor="imageUrl" className="placeholder">ImageUrl</label>
         </div>
-        <button className="submit"><UpdateIcon/> UPDATE</button>
+        <div className="action">
+              <button className="action-button" type='submit'><UpdateIcon /> UPDATE</button>
+            </div>
+        {/* <button className="submit" type='submit'><UpdateIcon /> UPDATE</button> */}
+      </form>
       </div>
     </>
   )

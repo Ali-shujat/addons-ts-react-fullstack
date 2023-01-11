@@ -104,7 +104,8 @@ export default function Album() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">➕ Add a puppy</Button>
+              <Button variant="contained"
+              onClick={() => navigate(`/puppy-create`)}>➕ Add a puppy</Button>
               <Button variant="outlined">buy for puppy</Button>
             </Stack>
           </Container>

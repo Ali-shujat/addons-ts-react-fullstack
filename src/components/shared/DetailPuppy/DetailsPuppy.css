@@ -1,4 +1,11 @@
-
+.DetailBody{
+    align-items: center;
+    background-color: #f1f3fb;
+    display: flex;
+    justify-content: center;
+    height: 100vh; 
+}
+/*
 .input,
 select {
     width: 100%;
@@ -24,8 +31,8 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: #45a049;
 }
-
-.details {
+*/
+/* .details {
     width: 500px;
     border-radius: 5px;
     background-color: #f2f2f2;
@@ -40,4 +47,4 @@ input[type=submit]:hover {
 }
 .home{
     float: right;
-}
+}  */
