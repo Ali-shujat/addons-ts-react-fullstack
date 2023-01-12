@@ -96,7 +96,7 @@
   }
   
   .cut {
-    background-color: #333867;
+    background-color: #8c83d1;
     border-radius: 6px;
     height: 24px;
     left: 10px;
@@ -115,7 +115,7 @@
   }
   
   .placeholder {
-    color: #65657b;
+    color: #ffffff;
     font-family: sans-serif;
     font-size: 25px;
     left: 10px;
@@ -133,7 +133,7 @@
   }
   
   .input:not(:placeholder-shown) ~ .placeholder {
-    color: #808097;
+    color: #ffffff;
   }
   
   .input:focus ~ .placeholder {

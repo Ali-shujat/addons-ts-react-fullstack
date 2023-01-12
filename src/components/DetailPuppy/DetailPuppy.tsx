@@ -69,7 +69,11 @@ function DetailPuppy() {
                             </Typography>
                         </CardContent>
                     </CardActionArea>
-                    <CardActions>
+                    <CardActions disableSpacing={true} sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                  }}>
                         <Button size="small" color="primary">
                             <Link to="/">🏠Home</Link>
                         </Button>

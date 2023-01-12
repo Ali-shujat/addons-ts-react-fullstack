@@ -16,9 +16,13 @@ import Typography from '@mui/material/Typography';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
+import PageviewIcon from '@mui/icons-material/Pageview';
 
-
-interface IPuppy{
+interface IPuppy {
   id: string;
   breed: string;
   name: string;
@@ -57,7 +61,7 @@ export default function Album() {
 
       });
   }
- 
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -105,7 +109,7 @@ export default function Album() {
               justifyContent="center"
             >
               <Button variant="contained"
-              onClick={() => navigate(`/puppy-create`)}>➕ Add a puppy</Button>
+                onClick={() => navigate(`/puppy-create`)}><AddIcon /> Add a puppy</Button>
               <Button variant="outlined">buy for puppy</Button>
             </Stack>
           </Container>
@@ -116,42 +120,67 @@ export default function Album() {
             {puppy.map((card) => (
               <Grid item key={card.id} xs={12} sm={6} md={4}>
                 <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column', gap: 2,
+                    borderRadius: 2,
+                    color:'indigo',
+                    boxShadow: '2',
+                    '&:hover': {
+                      boxShadow: `0 3px 6px 0`,
+                    },
+                  }}
                 >
                   <CardMedia
                     component="img"
                     sx={{
-                      // 16:9
+                      16: 9
                       //pt: '56.25%',
                     }}
 
                     alt="random"
                     image={card.image}
+                    height="250"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {card.breed}
+                    <Typography gutterBottom variant="h5" component="h3" color="indigo">
+                      BREED : {card.breed}
                     </Typography>
-                    <Typography>
-                      {card.name}
+                    <Typography color="indigo" component="h5">
+                      Puppy Name : {card.name}
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button className="me-4" size="small"
-                      variant="outlined" color='info'
-                      onClick={() => navigate(`/puppy-details/${card.id}`)}>View</Button>
-                    <Button className="me-4" size="small"
-                      variant="outlined" color='primary'
+                  <CardActions disableSpacing={true} sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                  }}>
+                    <Button className="me-4" size="large"
+                      color='info'
+                      onClick={() => navigate(`/puppy-details/${card.id}`)}
+                    >
+                      <PageviewIcon sx={{ fontSize: 30 }}/>
+                    </Button>
+                    <Button className="me-4" size="large"
+                      color='success'
                       onClick={() => navigate(`/puppy-update/${card.id}`)}
+
                     >
-                      🖋️Edit
+                      <EditIcon sx={{ fontSize: 30 }}/>
                     </Button>
-                    <Button style={{ float: 'right' }} size="small"
-                      variant="outlined" color="error"
+                    <Button className="me-4" size="large"
+                      color="error"
                       onClick={() => confirmDeleteHandler(card.id)}
+                    // startIcon={<DeleteIcon />}
                     >
-                      ❌Delete
+                      <DeleteIcon sx={{ fontSize: 30 }} />
                     </Button>
+                    {/* <IconButton aria-label="delete" 
+                    size="large" color="error"
+                   >
+                      <DeleteIcon fontSize="inherit"  style={{ float: 'inline-end' }}/>
+                    </IconButton> */}
                   </CardActions>
                 </Card>
               </Grid>

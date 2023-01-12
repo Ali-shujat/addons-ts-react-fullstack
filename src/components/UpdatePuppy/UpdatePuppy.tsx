@@ -107,14 +107,14 @@ function UpdatePuppy() {
           <label  htmlFor="puppy_name" className="placeholder">Puppy Name</label>
         </div>
         <div className="input-container ic2">
-          <input id="lastname" className="input" type="text" placeholder=" " value={puppy.breed} name='breed' onChange={handleInputChange} />
+          <input id="puppy_breed" className="input" type="text" placeholder=" " value={puppy.breed} name='breed' onChange={handleInputChange} />
           <div className="cut"></div>
-          <label htmlFor="lastname" className="placeholder">  Breed</label>
+          <label htmlFor="puppy_breed" className="placeholder">  Breed</label>
         </div>
         <div className="input-container ic2">
-          <input id="email" className="input" type="text" placeholder=" " value={puppy.birthDate} name='bithDate' onChange={handleInputChange} />
+          <input id="birth_date" className="input" type="text" placeholder=" " value={puppy.birthDate} name='birthDate' onChange={handleInputChange} />
           <div className="cut cut-short"></div>
-          <label htmlFor="email" className="placeholder">BirthDate</label>
+          <label htmlFor="birth_date" className="placeholder">BirthDate</label>
         </div>
         <div className="input-container ic2">
           <input id="imageUrl" className="input" type="text" placeholder=" " value={puppy.image} name='image' onChange={handleInputChange} />
@@ -122,7 +122,7 @@ function UpdatePuppy() {
           <label htmlFor="imageUrl" className="placeholder">ImageUrl</label>
         </div>
         <div className="action">
-              <button className="action-button" type='submit'><UpdateIcon /> UPDATE</button>
+              <button className="action-button" type='submit' ><UpdateIcon />UPDATE</button>
             </div>
         {/* <button className="submit" type='submit'><UpdateIcon /> UPDATE</button> */}
       </form>

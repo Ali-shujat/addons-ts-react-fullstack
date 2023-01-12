@@ -44,10 +44,6 @@ function AddPuppy() {
   }
 
   const navigate = useNavigate();
-  function getDateFromFormat(): string | number | readonly string[] | undefined {
-    throw new Error('Function not implemented.');
-  }
-
   return (
     <>
       <div className="container">

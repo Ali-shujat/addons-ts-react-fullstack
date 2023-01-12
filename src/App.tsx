@@ -3,7 +3,7 @@ import Album from './components/Album';
 import { Route, Routes } from "react-router-dom";
 import UpdatePuppy from './components/UpdatePuppy/UpdatePuppy';
 import AddPuppy from './components/AddPuppy/AddPuppy';
-import DetailPuppy from './components/shared/DetailPuppy/DetailPuppy';
+import DetailPuppy from './components/DetailPuppy/DetailPuppy';
 
 function App() {
 
