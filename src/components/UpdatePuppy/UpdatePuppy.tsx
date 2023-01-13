@@ -1,5 +1,4 @@
 import UpdateIcon from '@mui/icons-material/Update';
-import { Box, Button, Container, imageListClasses, TextField } from '@mui/material';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -19,7 +18,7 @@ function UpdatePuppy() {
 
   const navigate = useNavigate();
 
-  const { id } = useParams();
+  const  {id}  = useParams();
 
   useEffect(() => {
     axios.get(`https://localhost:7205/api/Puppies/${id}`)

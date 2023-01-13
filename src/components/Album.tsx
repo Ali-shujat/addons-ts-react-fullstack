@@ -1,3 +1,7 @@
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import PageviewIcon from '@mui/icons-material/Pageview';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -16,11 +20,6 @@ import Typography from '@mui/material/Typography';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import AddIcon from '@mui/icons-material/Add';
-import PageviewIcon from '@mui/icons-material/Pageview';
 
 interface IPuppy {
   id: string;

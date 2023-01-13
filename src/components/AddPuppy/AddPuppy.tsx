@@ -1,9 +1,9 @@
+import axios from "axios";
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { IPuppy } from '../../types';
-import axios from "axios";
-import './AddPuppy.css';
 import { v4 as uuidv4 } from 'uuid';
+import { IPuppy } from '../../types';
+import './AddPuppy.css';
 
 function AddPuppy() {
   const [puppy, setpuppy] = useState<IPuppy>(
@@ -57,11 +57,11 @@ function AddPuppy() {
           </div>
           <form className="card-form" onSubmit={submitForm}>
             <div className="input">
-              <input type="text" className="input-field" value={puppy.name} name='name' onChange={handleInputChange} />
+              <input type="text" className="input-field" value={puppy.name} name='name' onChange={handleInputChange} required/>
               <label className="input-label">Puppy name</label>
             </div>
             <div className="input">
-              <input type="text" className="input-field" value={puppy.breed} name='breed' onChange={handleInputChange} />
+              <input type="text" className="input-field" value={puppy.breed} name='breed' onChange={handleInputChange} required/>
               <label className="input-label">Breed</label>
             </div>
             <div className="input">
@@ -69,7 +69,7 @@ function AddPuppy() {
               <label className="input-label">Birth Date</label>
             </div>
             <div className="input">
-              <input type="text" className="input-field" value={puppy.image} name='image' onChange={handleInputChange} />
+              <input type="text" className="input-field" value={puppy.image} name='image' onChange={handleInputChange} required/>
               <label className="input-label">Image Url</label>
             </div>
             <div className="action">
